@@ -1,0 +1,113 @@
+.carousel-container{
+    margin-top: 40px;
+
+    .main{
+        margin: 0 auto; //居中 
+        position: relative;
+        width: 72vw;
+        height: 570px;
+
+        &:hover{
+            .slider-container > .slider-content > .single-slider > .left{
+                display: block;
+            }
+            .slider-container > .slider-content > .single-slider > .right{
+                display: block;
+            }
+        }
+
+        .slider-container{
+            position: absolute;
+            left: 50%; // 居中
+            top: 0;
+            bottom: -50%;
+            width: 100%;
+            height: 39vw;
+            margin: 0 auto 0 -50%;
+
+            .slider-content{
+                position: relative;
+                left: 50%;
+                top: 0;
+                width: 70%;
+                height: 80%;
+                transform: translateX(-50%);
+
+                .single-slider{
+                    z-index: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    transition: z-index 0ms .25s;
+
+                    .left{
+                        opacity: .5;
+                        position: absolute;
+                        display: none;
+                        z-index: 3;
+                        right: 101%;
+                        width: 50px;
+                        height: 100%;
+                        cursor: pointer;
+                        background-size: 50px 50px;
+                        background-repeat: no-repeat;
+                        background-position: 0;
+                    }              
+
+                    .right{
+                        opacity: .5;
+                        position: absolute;
+                        display: none;
+                        z-index: 3;
+                        left: 101%;
+                        width: 50px;
+                        height: 100%;
+                        cursor: pointer;
+                        background-size: 50px 50px;
+                        background-repeat: no-repeat;
+                        background-position: 0;
+                    }
+
+                    .content{
+                        box-shadow: 0 10px 40px rgb(0 0 0 / 20%);
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        transform: scale(0);
+                        transition: .5s cubic-bezier(.17,.67,.55,1.43);
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+
+                    &.active{
+                        z-index: 2;
+                        .content{
+                            opacity: 1;
+                            transform: translateX(0) scale(1);
+                        }
+                    }
+
+                    &.pre{
+                        z-index: 1;
+                        .content{
+                            opacity: .3;
+                            transform: translateX(-25%) scale(.7);
+                        }
+                    }
+
+                    &.post{
+                        z-index: 1;
+                        .content{
+                            opacity: .3;
+                            transform: translateX(25%) scale(.7);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
